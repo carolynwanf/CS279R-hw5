@@ -5,18 +5,9 @@ import random
 # Creating a Flask app
 app = Flask(__name__)
 
-# Configuring a database for the app
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# db = SQLAlchemy(app)
-
-# Setting up model class for todos
-# class Todo(db.Model):
-#     # Unique identifier
-#     id = db.Column(db.Integer, primary_key=True)
-#     title = db.Column(db.String(100))
-#     complete = db.Column(db.Boolean)
-
+# Todo class
+# Schema: 
+#   Todo has attributes id (int), title (str), complete (bool), and priority (string, high|low|medium)
 class Todo():
     def __init__(self, id, title, complete, priority):
         self.id = id
@@ -46,9 +37,8 @@ def add():
 
     return redirect(url_for("home"))
 
-# Generate a random ID 
+# Generate a random ID recursively
 def generateId():
-
     temp_id = random.randint(0,1000)
     if temp_id not in ids:
         ids.add(temp_id)
@@ -57,7 +47,7 @@ def generateId():
         return generateId()
 
 
-# Update 
+# Update a todo
 @app.route("/update/<int:todo_id>")
 def update(todo_id):
     todo = todo_list[todo_id]
