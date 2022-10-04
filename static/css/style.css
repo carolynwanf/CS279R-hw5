@@ -1,0 +1,12 @@
+/* Todo priority colorings */
+div.ui.segment.high {
+    background-color:#ffcece;
+}
+
+div.ui.segment.medium {
+    background-color:#ffe4ce;
+}
+
+div.ui.segment.low {
+    background-color:#fffdce;
+}
